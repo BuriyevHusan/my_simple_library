@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="unnamed">
+    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="my_simple_library" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: jakarta.servlet:jakarta.servlet-api:6.0.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:6.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:6.0.1" />
+          <element id="library" level="project" name="Maven: io.micrometer:micrometer-observation:1.10.0" />
+          <element id="library" level="project" name="Maven: io.micrometer:micrometer-commons:1.10.0" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
