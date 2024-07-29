@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        /* Ensuring that the body takes up the full height of the viewport */
+        body {
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            background-color: #f8f9fa; /* Light background color */
+            font-family: Arial, sans-serif; /* Font family for the page */
+        }
+
+        /* Container styling */
+        .container {
+            width: 80%; /* Reduce width to make room for navigation */
+            max-width: 1200px; /* Max width for larger screens */
+            margin: 0 auto; /* Center the container horizontally */
+            text-align: center; /* Center text inside the container */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Column layout */
+            align-items: center; /* Center items horizontally */
+        }
+
+        /* Navigation styling */
+        .nav {
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flexbox for layout */
+            justify-content: flex-end; /* Align items to the right */
+            width: 100%; /* Full width of the container */
+            margin-bottom: 20px; /* Space below the navigation */
+            margin-top: 20px; /* Space above the navigation */
+        }
+
+        .nav-item {
+            margin-left: 20px; /* Space between navigation items */
+        }
+
+        .nav-link {
+            text-decoration: none; /* Remove underline */
+            color: #007bff; /* Blue color for links */
+            font-size: 1.5em; /* Larger font size for links */
+        }
+
+        .nav-link:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Content styling */
+        .content {
+            flex-grow: 1; /* Allow the content to grow and fill space */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Column layout */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+
+        /* h1 tag styling */
+        h1 {
+            color: #333; /* Dark color for the heading text */
+            font-size: 2.5em; /* Font size for the heading */
+            margin: 0; /* Remove default margin */
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/app/login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/app/register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/app/logout">Logout</a>
+        </li>
+    </ul>
+    <div class="content">
+        <h1>Welcome to the Library!</h1>
+    </div>
+</div>
+</body>
+</html>
