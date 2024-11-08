@@ -1,9 +1,11 @@
 package my.simple.library.controller.home;
 
 import my.simple.library.model.AuthUser;
-import my.simple.library.repository.AuthRepository;
+import my.simple.library.model.enums.UserStatus;
+import my.simple.library.repository.UserRepository;
 import my.simple.library.utls.CheckEmail;
 import my.simple.library.utls.CheckPassword;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +18,12 @@ import java.util.Optional;
 @Controller
 public class RegisterController {
 
-    private final AuthRepository authRepository;
+    private final UserRepository authRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public RegisterController(AuthRepository authRepository) {
+    public RegisterController(UserRepository authRepository, PasswordEncoder passwordEncoder) {
         this.authRepository = authRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/app/register")
@@ -41,21 +45,22 @@ public class RegisterController {
         if (name == null || name.isEmpty()) {
             errors.put("name_error", "Name is required");
         }
-        if (username == null || username.isEmpty()) {
-            Optional<AuthUser> byUsername = authRepository.findByUsername(username);
-            if (byUsername.isPresent()) {
-                errors.put("username_error", "Username already exists");
-            }
-        }
-        if ((email == null || email.isEmpty()) && !CheckEmail.checkEmail(email)) {
-            Optional<AuthUser> byEmail = authRepository.findByEmail(email);
-            if (byEmail.isPresent()) {
-                errors.put("email_error", "Please enter a valid email");
-            }
-        }
+
         if ((password == null || password.isEmpty()) && !CheckPassword.checkPassword(password)) {
             errors.put("password_error", "Password does not match");
         }
+
+
+        Optional<AuthUser> byUsername = authRepository.findByUsername(username);
+        if (byUsername.isPresent() || username == null || username.isEmpty()) {
+            errors.put("username_error", "Username already exists");
+        }
+
+        Optional<AuthUser> byEmail = authRepository.findByEmail(email);
+        if (byEmail.isPresent() || email == null || email.isEmpty()) {
+            errors.put("email_error", "Please enter a valid email");
+        }
+
         if (!errors.isEmpty()) {
             errors.forEach(modelAndView::addObject);
             modelAndView.setViewName("home/sign_up");
@@ -64,7 +69,8 @@ public class RegisterController {
             authUser.setName(name);
             authUser.setUsername(username);
             authUser.setEmail(email);
-            authUser.setPassword(password);
+            authUser.setPassword(passwordEncoder.encode(password));
+            authUser.setStatus(UserStatus.ACTIVE);
 
             authRepository.save(authUser);
             modelAndView.setViewName("home/sign_in");

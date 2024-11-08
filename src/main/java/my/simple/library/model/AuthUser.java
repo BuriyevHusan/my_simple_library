@@ -1,6 +1,9 @@
 package my.simple.library.model;
 
 import lombok.*;
+import my.simple.library.model.enums.UserStatus;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,4 +16,6 @@ public class AuthUser {
     private String username;
     private String email;
     private String password;
+    private UserStatus status;
+    private List<UserRole> roles;
 }
