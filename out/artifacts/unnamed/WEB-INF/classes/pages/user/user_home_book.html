@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        .book-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .book-image img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .comments {
+            margin-top: 30px;
+        }
+        .comments h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .comments ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .comments ul li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: #555;
+        }
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="book-image">
+        <img th:src="@{${attachment.getImageUrl()}}" alt="Book image">
+    </div>
+    <h2 th:text="${book.title}">Title : </h2>
+    <h3 th:text="${book.author}">Author : </h3>
+    <p th:text="${book.description}">Description : </p>
+    <a th:href="@{/download/book}" class="download-button">Download</a>
+    <div class="comments">
+        <h4 th:text="${book.getComments().size()}">Comments : </h4>
+        <ul>
+            <li th:each="comment : ${book.getComments()}" th:text="${comment}"></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Confirmation</title>
+    <style>
+        /* Simple styling to center the content and add some spacing */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .logout-form {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .logout-form span {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .logout-form button, .logout-form a {
+            margin: 5px;
+            padding: 10px 15px;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+        }
+        .logout-form button {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .logout-form a {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="logout-form">
+    <form action="/app/logout" method="post">
+        <div>
+            <span>Are you sure you want to log out?</span>
+        </div>
+        <button type="submit">Yes</button>
+        <a href="/app/home">Back</a>
+    </form>
+</div>
+</body>
+</html>
